@@ -20,8 +20,10 @@ s,##HADOOP_LOG_DIR##,${SCRATCH}/hadoop_logs,g;
 s,##YARN_LOG_DIR##,${SCRATCH}/hadoop_logs,g;
 s,##NAMENODE_SCRATCH##,${SCRATCH}/dfs/namenode,g;
 s,##DATANODE_SCRATCH##,${SCRATCH}/dfs/datanode,g;
+s,##YARN_SCRATCH##,${SCRATCH}/dfs/yarn,g;
 s,##HIVE_CONF_DIR##,${HIVE_CONF_DIR},g;
 s,##HIVE_SCRATCH##,${SCRATCH}/hive,g;
+s,##HIVE_METASTORE_LOCAL_DIR##,${HIVE_METASTORE_LOCAL_DIR},g;
 EOF
 }
 
@@ -102,7 +104,7 @@ prepare_hadoop(){
   ${HADOOP_HOME}/bin/hdfs namenode -format
   ${HADOOP_HOME}/bin/hdfs datanode -format
   # Init HDFS
-  ${HADOOP_HOME}/sbin/start-dfs.sh
+  ${HADOOP_HOME}/sbin/start-all.sh
   
   # Create HDFS folders
   create_HDFS_folder "/base"
@@ -124,6 +126,7 @@ prepare_hive(){
   subs=$(get_template_substitutions)
   $(/usr/bin/perl -i -pe "$subs" $HIVE_CONF_DIR/*)
 
+  rm "${HIVE_HOME}/lib/log4j-slf4j-impl-2.6.2.jar"
   create_HDFS_folder "/user/hive/warehouse"
   create_HDFS_folder "/tmp/hive"
   ${HIVE_HOME}/bin/schematool -initSchema -dbType derby
@@ -170,7 +173,7 @@ ctrl_c(){
     export EXITING="TRUE"
     cd ${PROJECT_ABSOLUTE_PATH}
     echo -e ${RED}Stopping services and cleaning scratch folders${NC}
-    ${HADOOP_HOME}/sbin/stop-dfs.sh
+    ${HADOOP_HOME}/sbin/stop-all.sh
     rm -rf ${SCRATCH}
     ps -e | grep ingestor.sh | awk '{print $1}' | xargs kill $1
     exit 1
@@ -183,7 +186,6 @@ ctrl_c(){
 
 # MAIN CODE
 trap ctrl_c INT
-prepare_environment
 prepare_services
 gnome-terminal  -- "${PROJECT_ABSOLUTE_PATH}/bin/ingestor.sh" &
 echo -e "${BLUE}Waitting for ctrl+c to stop all processes${NC}"

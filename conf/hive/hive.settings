@@ -27,8 +27,6 @@ set hive.metastore.execute.setugi=true;
 set hive.metastore.warehouse.dir=/apps/hive/warehouse;
 set hive.optimize.index.filter=true;
 set hive.orc.splits.include.file.footer=false;
-set hive.security.authorization.enabled=false;
-set hive.security.metastore.authorization.manager=org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider;
 set hive.server2.enable.doAs=false;
 set hive.optimize.sort.dynamic.partition=true;
 set hive.stats.autogather=true;
@@ -52,7 +50,6 @@ set hive.cbo.enable=true;
 set hive.stats.fetch.column.stats=true;
 set hive.stats.fetch.partition.stats=true;
 
-set hive.support.sql11.reserved.keywords=false;
 
 -- ###########################
 -- FileFormat settings.

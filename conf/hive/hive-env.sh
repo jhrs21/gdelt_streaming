@@ -29,7 +29,7 @@
 
  if [ "$SERVICE" = "cli" ]; then
    if [ -z "$DEBUG" ]; then
-     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12  -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:+UseParNewGC -XX:-UseGCOverheadLimit"
+     export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12  -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
    else
      export HADOOP_OPTS="$HADOOP_OPTS -XX:NewRatio=12  -XX:MaxHeapFreeRatio=40 -XX:MinHeapFreeRatio=15 -XX:-UseGCOverheadLimit"
    fi
@@ -48,7 +48,8 @@
 
 
 # Set HADOOP_HOME to point to a specific hadoop install directory
- HADOOP_HOME=##HADOOP_HOME##
+ export HADOOP_HOME=##HADOOP_HOME##
+ export HADOOP_VERSION=${HADOOP_VERSION##*-}
 
 # Hive Configuration Directory can be controlled by:
  export HIVE_CONF_DIR=##HIVE_CONF_DIR##
