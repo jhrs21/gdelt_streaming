@@ -1,0 +1,113 @@
+-- ###########################
+-- General Settings
+-- ###########################
+
+set fs.file.impl.disable.cache=true;
+set fs.hdfs.impl.disable.cache=true;
+set hive.auto.convert.sortmerge.join=true;
+set hive.compactor.abortedtxn.threshold=1000;
+set hive.compactor.check.interval=300;
+set hive.compactor.delta.num.threshold=10;
+set hive.compactor.delta.pct.threshold=0.1f;
+set hive.compactor.initiator.on=false;
+set hive.compactor.worker.threads=0;
+set hive.compactor.worker.timeout=86400;
+set hive.compute.query.using.stats=true;
+set hive.enforce.bucketing=true;
+set hive.enforce.sorting=true;
+set hive.enforce.sortmergebucketmapjoin=true;
+set hive.limit.pushdown.memory.usage=0.04;
+set hive.map.aggr=true;
+set hive.map.aggr=true;
+set hive.map.aggr.hash.force.flush.memory.threshold=0.9;
+set hive.mapred.reduce.tasks.speculative.execution=false;
+set hive.metastore.cache.pinobjtypes=Table,Database,Type,FieldSchema,Order;
+set hive.metastore.client.socket.timeout=60;
+set hive.metastore.execute.setugi=true;
+set hive.metastore.warehouse.dir=/apps/hive/warehouse;
+set hive.optimize.index.filter=true;
+set hive.orc.splits.include.file.footer=false;
+set hive.security.authorization.enabled=false;
+set hive.security.metastore.authorization.manager=org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider;
+set hive.server2.enable.doAs=false;
+set hive.optimize.sort.dynamic.partition=true;
+set hive.stats.autogather=true;
+set hive.txn.manager=org.apache.hadoop.hive.ql.lockmgr.DummyTxnManager;
+set hive.txn.max.open.batch=1000;
+set hive.txn.timeout=300;
+
+set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nonstrict;
+set hive.exec.max.created.files=100000;
+set hive.exec.max.dynamic.partitions=5000;
+set hive.exec.max.dynamic.partitions.pernode=2000;
+
+set hive.vectorized.execution.enabled=true;
+set hive.vectorized.execution.reduce.enabled=true;
+set hive.vectorized.groupby.checkinterval=1024;
+set hive.vectorized.groupby.flush.percent=1;
+set hive.vectorized.groupby.maxentries=1024;
+
+set hive.cbo.enable=true;
+set hive.stats.fetch.column.stats=true;
+set hive.stats.fetch.partition.stats=true;
+
+set hive.support.sql11.reserved.keywords=false;
+
+-- ###########################
+-- FileFormat settings.
+-- ###########################
+
+set hive.orc.splits.include.file.footer=false;
+set hive.exec.orc.default.compress=ZLIB;
+set parquet.compression=SNAPPY;
+
+-- ###########################
+-- optimizations for joins.
+-- ###########################
+
+set hive.auto.convert.join=false;
+set hive.auto.convert.join.noconditionaltask=false;
+set hive.auto.convert.join.noconditionaltask.size=25600000;
+set hive.mapjoin.localtask.max.memory.usage = 0.999;
+set hive.mapjoin.bucket.cache.size=10000;
+set hive.optimize.bucketmapjoin.sortedmerge=false;
+set hive.optimize.bucketmapjoin=true;
+set hive.convert.join.bucket.mapjoin.tez=false;
+set hive.exec.submit.local.task.via.child=true;
+
+set hive.auto.convert.sortmerge.join=true;
+set hive.auto.convert.sortmerge.join.to.mapjoin=false;
+
+
+-- ###########################
+-- Parallelism settings       #This section may include tez settings related to parallelism
+-- ###########################
+
+set hive.tez.auto.reducer.parallelism=true;
+set hive.exec.reducers.bytes.per.reducer=67108864 ;
+set hive.tez.max.partition.factor=2.0;
+set hive.tez.min.partition.factor=0.25;
+set hive.tez.dynamic.partition.pruning.max.data.size=104857600;
+set hive.tez.dynamic.partition.pruning.max.event.size=1048576;
+set hive.optimize.reducededuplication.min.reducer=4;
+set hive.optimize.reducededuplication=true;
+
+-- ###########################
+-- Tez specific settings
+-- ###########################
+
+set tez.application.tags=;
+set hive.execution.engine=mr;
+set hive.tez.container.size=512;
+set hive.tez.cpu.vcores=-1;
+set hive.tez.java.opts=-Xms410m -Xmx410m -Djava.net.preferIPv4Stack=true -XX:NewRatio=8 -XX:+UseNUMA -XX:+UseParallelGC;
+set hive.tez.input.format=org.apache.hadoop.hive.ql.io.HiveInputFormat;
+set hive.server2.tez.default.queues=default;
+set hive.server2.tez.initialize.default.sessions=false;
+set hive.server2.tez.sessions.per.default.queue=1;
+set hive.tez.exec.print.summary=true;
+set hive.tez.dynamic.partition.pruning=true;
+
+
+

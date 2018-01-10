@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+<property>
+  <name>dfs.namenode.name.dir</name>
+  <value>##NAMENODE_SCRATCH##</value>
+</property>
+
+<property>
+  <name>dfs.datanode.data.dir</name>
+  <value>##DATANODE_SCRATCH##</value>
+</property>
+
+<property>
+  <name>dfs.replication</name>
+  <value>1</value>
+</property>
+
+<property>
+  <name>dfs.datanode.hostname</name>
+  <value>localhost</value>
+</property>
+<property>
+  <name>dfs.blocksize</name>
+  <value>134217728</value>
+</property>
+
+<property>
+  <name>dfs.datanode.address</name>
+  <value>localhost:50010</value>
+</property>
+
+<property>
+  <name>dfs.datanode.ipc.address</name>
+  <value>localhost:50020</value>
+</property>
+
+<property>
+  <name>dfs.namenode.http-address</name>
+  <value>localhost:50070</value>
+</property>
+
+<property>
+  <name>dfs.datanode.http.address</name>
+  <value>localhost:50075</value>
+</property>
+
+<property>
+  <name>dfs.namenode.secondary.http-address</name>
+  <value>localhost:50090</value>
+</property>
+
+<property>
+  <name>dfs.namenode.backup.address</name>
+  <value>localhost:50105</value>
+</property>
+
+<property>
+  <name>dfs.datanode.dns.interface</name>
+  <value>eth0</value>
+</property>
+
+<property>
+  <name>dfs.client.read.shortcircuit</name>
+  <value>true</value>
+</property>
+
+<property>
+  <name>dfs.domain.socket.path</name>
+  <value>/var/run/hadoop-hdfs/datanode</value>
+</property>
+
+<property>
+  <name>dfs.client.read.shortcircuit.streams.cache.size</name>
+  <value>4096</value>
+</property>
+
+</configuration>
