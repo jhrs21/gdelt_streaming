@@ -5,6 +5,10 @@
   <script type="text/javascript"> country_list = JSON.parse('{{ countries|tojson|safe }}'); </script>
 {% endblock %}
 
+{% block subtitle %}
+	<a class="navbar-brand" href="#">Batch data</a>
+{% endblock %}
+
 {% block body %}
     <div id="regions_div" style="width: 900px; height: 500px;"></div>
 {% endblock %}

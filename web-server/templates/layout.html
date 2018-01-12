@@ -28,8 +28,10 @@
   </head>
 
   <body>
-  	<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <a class="navbar-brand" href="#">Dashboard</a>
+ 	<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+		{% block subtitle %}
+      		<a class="navbar-brand" href="#">Dashboard</a>
+      	{% endblock %}
     </nav>
 
     <div class="container-fluid">

@@ -6,8 +6,12 @@ app = Flask(__name__)
  
 @app.route("/")
 def index():
-    return render_template(
-        'overview.html')
+    return render_template('overview.html')
+
+
+@app.route("/streaming")
+def geochart_streaming():
+    return render_template('streaming.html')
 
 
 @app.route("/batching")
@@ -22,8 +26,7 @@ def geochart_batching():
         ['Spain', 400],
         ['RU', 700]
     ]
-    return render_template(
-        'geochart.html', countries=countries)
+    return render_template('batching.html', countries=countries)
 
 
 @app.route("/batching_data")
