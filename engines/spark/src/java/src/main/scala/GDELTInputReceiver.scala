@@ -2,6 +2,7 @@ package gdelt.analysis.spark.scala.operations
 
 import java.io.{BufferedReader, InputStreamReader}
 import java.nio.charset.StandardCharsets
+import java.net.URI;
 
 import gdelt.analysis.common.GDELTParser
 import gdelt.analysis.common.data.GDELTEvent
@@ -29,8 +30,10 @@ class GDELTInputReceiver(path: String)
   }
 
   private def receive(): Unit = {
+    val conf = new Configuration()
+    conf.set("fs.defaultFS", "hdfs://localhost:9001")
     val pt = new Path(path)
-    val fs = FileSystem.get(new Configuration())
+    val fs = FileSystem.get(URI.create("hdfs://localhost:9001"),conf);
     var line: String = null
     try {
       val reader = new BufferedReader(new InputStreamReader(fs.open(pt), StandardCharsets.UTF_8))

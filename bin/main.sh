@@ -134,10 +134,7 @@ trap ctrl_c INT
 prepare_services
 
 gnome-terminal -- "${PROJECT_ABSOLUTE_PATH}/bin/ingestor.sh" &
-pause
-gnome-terminal -- "${SPARK_HOME}/bin/spark-submit \
-       	--class gdelt.analysis.spark.job.SparkJavaJob \
-       	${PROJECT_ABSOLUTE_PATH}/engines/spark/java-0.1-SNAPSHOT.jar" &
+gnome-terminal -- "${PROJECT_ABSOLUTE_PATH}/bin/start_spark.sh" &
 
 echo -e "${BLUE}Waitting for ctrl+c to stop all processes${NC}"
 while [ 1 ]; do
