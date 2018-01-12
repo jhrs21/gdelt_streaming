@@ -62,6 +62,7 @@ ingest_daily_dataset(){
     ${HIVE_HOME}/bin/hive -i "${HIVE_CONF_DIR}/hive.settings" -f "${PROJECT_ABSOLUTE_PATH}/engines/hive/refreshMetastore.sql"
     DATE="$(date --date "$DATE +1 day" +%Y%m%d)"
     pause
+    pause
     "${HADOOP_HOME}/bin/hdfs" dfs -rm -r "/refresh/*"
  
   done
