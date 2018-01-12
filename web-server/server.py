@@ -6,11 +6,12 @@ app = Flask(__name__)
  
 @app.route("/")
 def index():
-    return "Flask App!"
+    return render_template(
+        'overview.html')
 
 
-@app.route("/geochart")
-def geochart():
+@app.route("/batching")
+def geochart_batching():
     countries = [
         ['Country', 'Popularity'],
         ['Germany', 200],
